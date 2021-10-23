@@ -15,13 +15,11 @@ spec:
         value: khidma
       - name: MYSQL_PASSWORD
         value: test
-    ports:
-      - containerPort: 3306
     volumeMounts:
     - mountPath: /var/lib/mysql
-      name: volume
+      name: mysql-data
   volumes:
-  - name: volume
+  - name: mysql-data
     hostPath:
       path: /data
       type: Directory
