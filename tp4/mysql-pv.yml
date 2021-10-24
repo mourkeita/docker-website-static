@@ -1,7 +1,7 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: mysql-volume
+  name: mysql-pv
 spec:
   containers:
   - name: mysql
@@ -20,6 +20,5 @@ spec:
       name: mysql-data
   volumes:
   - name: mysql-data
-    hostPath:
-      path: /data-volume
-      type: Directory
+    persistentVolumeClaim:
+      claimName: pvc
