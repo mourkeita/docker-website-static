@@ -5,8 +5,8 @@ service:
   nodePorts:
     http: "30008"
   persistence:
-    enabled: false
+    enabled: true
   mariadb:
     master:
       persistence:
-        enabled: false
+        enabled: true
