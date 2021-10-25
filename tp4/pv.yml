@@ -1,15 +1,15 @@
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
   name: pv
   labels:
     type: local
 spec:
+  storageClassName: manual
   capacity:
     storage: 1Gi
-  volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
-  storageClassName: manual
   hostPath:
     path: /data-pv
+    type: DirectoryOrCreate

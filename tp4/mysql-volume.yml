@@ -1,25 +1,25 @@
-kind: Pod
 apiVersion: v1
+kind: Pod
 metadata:
   name: mysql-volume
 spec:
   containers:
-  - name: mysql
-    image: mysql
-    env:
-      - name: MYSQL_ROOT_PASSWORD
-        value: password
-      - name: MYSQL_USER
-        value: test
-      - name: MYSQL_DATABASE
-        value: khidma
-      - name: MYSQL_PASSWORD
-        value: test
+  - image: mysql
+    name: mysql
     volumeMounts:
     - mountPath: /var/lib/mysql
       name: mysql-data
+    env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: password
+      - name: MYSQL_DATABASE
+        value: khidma
+      - name: MYSQL_USER
+        value: test
+      - name: MYSQL_PASSWORD
+        value: password
   volumes:
   - name: mysql-data
     hostPath:
       path: /data-volume
-      type: Directory
+      type: DirectoryOrCreate
