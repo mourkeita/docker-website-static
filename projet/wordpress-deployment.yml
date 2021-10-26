@@ -2,10 +2,8 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: wordpress-deployment
-  labels:
-    app: wordpress
+  namespace: wordpress
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: wordpress
@@ -16,19 +14,23 @@ spec:
     spec:
       containers:
       - name: wordpress
-        image: wordpress
+        image: wordpress:latest
         env:
-        - name: MYSQL_HOST
-          value: mysql-service
-        - name: MYSQL_PASSWORD
-          value: password
+          - name: WORDPRESS_DB_HOST
+            value: mysql-service
+          - name: WORDPRESS_DB_PASSWORD
+            value: toto
+          - name: WORDPRESS_DB_USER
+            value: toto 
+          - name: WORDPRESS_DB_NAME
+            value: wordpress
         ports:
           - containerPort: 80
         volumeMounts:
-          - mountPath: /var/www/html
-            name: wordpress-data
+          - name: wordpress-data          
+            mountPath: /var/www/html
       volumes:
       - name: wordpress-data
         hostPath:
-          path: /data-volume
+          path: /data/wordpress-volume
           type: DirectoryOrCreate

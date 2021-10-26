@@ -2,12 +2,12 @@ kind: Service
 apiVersion: v1
 metadata:
   name: mysql-service
+  namespace: wordpress
 spec:
   selector:
     app: mysql
-  clusterIP: 10.97.179.186
+  type: ClusterIP
   ports:
-    - protocol: TCP
-      port: 3306
+    - port: 3306
       targetPort: 3306
 
