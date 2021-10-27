@@ -1,0 +1,18 @@
+[all:vars]
+ansible_user=admin
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+[prod]
+client1 ansible_host=10.0.5.4
+client2 ansible_host=10.0.5.5
+
+[dev]
+master ansible_host=127.0.0.1
+
+[dev:vars]
+ansible_password=admin
+env=dev
+
+[prod:vars]
+ansible_password=admin
+env=prod

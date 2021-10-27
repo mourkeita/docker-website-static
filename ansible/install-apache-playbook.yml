@@ -1,0 +1,7 @@
+- name: "Apache Installation"
+  hosts: prod
+  tasks:
+    - name: "Apache package installation"
+      yum:
+        name: "httpd"
+        state: "present"
