@@ -1,0 +1,31 @@
+version: "3"
+services:
+  website:
+    image: php:apache
+    hostname: websitehostname
+    container_name: websiteco
+    depends_on:
+      - api
+    environment:
+      POSTGRES_USER: user-test
+      POSTGRES_PASSWORD: user-password
+    volumes:
+      - ./website:/var/www/html
+    ports:
+      - 80:80
+    networks:
+      - khidma
+
+  api:
+    image: mkeita/python-mour
+    hostname: apihostname
+    container_name: apico
+    volumes:
+      - ./simple_api/student_age.json:/data/student_age.json
+    ports:
+      - 8080:5000
+    networks:
+      - khidma
+
+networks:
+  khidma:
