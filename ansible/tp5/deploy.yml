@@ -2,6 +2,8 @@
 - name: "Install Apache in a docker container"
   hosts: prod
   become: yes
+  vars:
+    ansible_sudo_pass: admin
   tasks:
     - name: "Install vim"
       yum:
