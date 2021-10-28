@@ -1,0 +1,5 @@
+---
+- name: "Deploy Wordpress"
+  hosts: prod
+  roles:
+    - role: '/root/ansible-role-containerized-wordpress'
