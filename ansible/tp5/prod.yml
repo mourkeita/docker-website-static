@@ -1,0 +1,12 @@
+---
+prod:
+  hosts:
+    client:
+      ansible_host: 10.0.0.4
+    main:
+      ansible_host: 10.0.0.3
+  vars:
+    ansible_user: admin
+    ansible_password: admin
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+[root@node1 webapp]# cat prod.yml

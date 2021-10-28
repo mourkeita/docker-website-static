@@ -1,0 +1,26 @@
+---
+- name: "Install Apache in a docker container"
+  hosts: prod
+  become: yes
+  tasks:
+    - name: "Install vim"
+      yum:
+        name: vim
+        state: latest
+    - name: "Install python-docker"
+      yum:
+        name: python-docker
+        state: latest
+
+    - name: "Create a directory if it does not exist"
+      ansible.builtin.file:
+        path: /home/admin/test
+        state: directory
+        mode: '0755'
+    - name: "Create Apache container"
+      docker_container:
+        name: apache
+        state: started
+        ports:
+          - "80:80"
+        image: httpd

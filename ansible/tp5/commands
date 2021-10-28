@@ -1,0 +1,3 @@
+ansible -i hosts prod -m ping
+ansible-playbook -i prod.yml deploy.yml
+ansible-playbook -i prod.yml deploy.yml -kK
