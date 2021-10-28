@@ -9,4 +9,3 @@ prod:
     ansible_user: admin
     ansible_password: admin
     ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-[root@node1 webapp]# cat prod.yml
